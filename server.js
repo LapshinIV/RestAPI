@@ -27,7 +27,7 @@ router.get('', function(req, res) {
     res.json(flights);
 });
 
-app.use('/flights_subscriptions', router);    // all of our routes will be prefixed with /api
+app.use('/flight_subscriptions', router);    // all of our routes will be prefixed with /api
 
 app.get('*', function(req, res){
     res.send('Page not Found', 404);
