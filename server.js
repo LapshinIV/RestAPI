@@ -1,4 +1,5 @@
 var express = require('express');           // call express
+var app     = express();                    // define our app using express
 var flights = require('./db/Flights_Full.json');
 var port    = process.env.PORT || 8080;     // set our port
 var _       = require("underscore");
