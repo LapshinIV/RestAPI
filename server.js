@@ -8,16 +8,17 @@ var cors    = require('cors');
 app.use(cors());
 
 app.get('/carriers', function(req, res) {
-    res.send('Not supported yet. Coming soon...\n');
+    var carriersSort = [];
+    for (var i=0; i<flights.length; i++){
+        var carriersAll = _.omit(flights[i], 'carrier_id', 'id', 'flight_number_start', 'flight_number_end', 'operational_suffix');
+        carriersSort.push(carriersAll)
+    }
+    res.json(carriersSort);
 });
 
 app.get('/flight_subscriptions/:carrier_code', function(req, res) {
-    var flights2 = _.filter(flights, function(flight){ return flight.carrier_code === req.params.carrier_code; });
-    if(flights2.length > 0) {
-        res.json(flights2);
-    }else{
-        res.send('Page not Found\n', 404);
-    }
+    var flights2 = _.where(flights, {carrier_code: req.params.carrier_code});
+        res.json(flights2)
 });
 
 app.get('*', function(req, res){
