@@ -22,7 +22,7 @@ var auth = function (req, res, next) {
         return unauthorized(res);
     }
 };
-app.get('/carriers', function(req, res) {
+app.get('/carriers', function(req, res){
     var carriersSort = [];
     for (var i=0; i<flights.length; i++){
         var carriersAll = _.omit(flights[i], 'carrier_id', 'id', 'flight_number_start', 'flight_number_end', 'operational_suffix');
